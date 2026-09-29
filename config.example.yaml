@@ -1,0 +1,34 @@
+# Copy to config.local.yaml (gitignored) and edit. Or just tell Claude "change X to Y" and it edits this file.
+# If no config file exists, agents ask you in chat and create it. To keep values only in chat, say so.
+
+profile:
+  name: "Your Name"
+  linkedin: "linkedin.com/in/your-handle"   # required in every resume (rules.require_linkedin)
+  languages: ["ru", "en"]
+
+paths:
+  data_dir: "./jobhunt-data"            # stats, vacancies, tailored resumes are written here
+  resumes_dir: "./jobhunt-data/resumes" # your base resumes (md, txt or pdf)
+  master_facts: "./jobhunt-data/master-facts.md"  # verified facts about you; the ONLY source for tailoring
+
+sites:                                   # enabled: true/false. Status of each adapter: see sites/*.md
+  hh:        { enabled: true,  domains: ["hh.ru"] }
+  rabota_by: { enabled: true,  domains: ["rabota.by"] }
+  superjob:  { enabled: false, domains: ["superjob.ru"] }
+  rabota_ru: { enabled: false, domains: ["rabota.ru"] }
+  hirify:    { enabled: false }          # uses Hirify MCP if you have it
+  linkedin:  { enabled: false }          # read-only, experimental, mind the site's terms
+
+search:
+  locations: ["Minsk", "Belarus", "Remote"]
+  keywords:  ["technical project manager", "product manager", "program manager"]
+  exclude:   ["intern", "junior"]
+  remote: "any"                          # any | remote | hybrid | onsite
+  salary_min: null
+  max_vacancies_per_run: 40
+  match_threshold: 60                    # show vacancies with match >= this, percent
+
+rules:
+  require_linkedin: true
+  zero_fabrication: true                 # tailoring may only use master_facts
+  read_only_sites: true                  # agents never apply, send, delete or edit on job sites

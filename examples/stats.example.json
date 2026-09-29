@@ -1,0 +1,13 @@
+{
+  "updated": "2026-01-15",
+  "totals": {"applications_all_time": 42},
+  "applications": [
+    {"id": "hh:1001", "site": "hh", "company": "Acme Robotics", "role": "Project Manager", "date": "2026-01-10", "status": "interview", "resume": "PM-general", "note": "", "why": ""},
+    {"id": "hh:1002", "site": "hh", "company": "Big Bank", "role": "Program Manager", "date": "2026-01-08", "status": "rejected", "resume": "PM-general", "note": "", "why": "Hypothesis: corporate role, resume has no banking domain"},
+    {"id": "hh:1003", "site": "hh", "company": "Bank X", "role": "Change Manager", "date": "2026-01-09", "status": "viewed", "resume": "Product", "note": "", "why": "Hypothesis: third application to one employer"},
+    {"id": "hh:1004", "site": "hh", "company": "SmallIT", "role": "Product Owner", "date": "2026-01-05", "status": "not_viewed", "resume": "Product", "note": "", "why": ""}
+  ],
+  "insights": ["Interviews came only from small IT companies", "Three applications to one bank look like mass sending"],
+  "profile_issues": ["Two resumes with near-identical titles", "LinkedIn link missing in profile contacts"],
+  "snapshots": [{"date": "2026-01-15", "totals": {"interview": 1, "rejected": 1, "viewed": 1, "not_viewed": 1}}]
+}
