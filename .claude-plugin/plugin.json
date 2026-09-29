@@ -1,0 +1,17 @@
+{
+  "name": "job-hunt-agents",
+  "version": "0.1.0",
+  "description": "Job search agents: application stats, vacancy scouting, resume tailoring.",
+  "license": "MIT",
+  "repository": "https://github.com/AlienLynx/job-hunt-agents",
+  "agents": [
+    "./.claude/agents/stats-collector.md",
+    "./.claude/agents/vacancy-scout.md",
+    "./.claude/agents/resume-tailor.md"
+  ],
+  "skills": [
+    "./skills/stats-collector",
+    "./skills/vacancy-scout",
+    "./skills/resume-tailor"
+  ]
+}

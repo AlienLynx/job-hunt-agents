@@ -1,0 +1,17 @@
+{
+  "name": "job-hunt-agents",
+  "owner": { "name": "AlienLynx" },
+  "metadata": {
+    "description": "Job search agents: application stats, vacancy scouting, resume tailoring."
+  },
+  "plugins": [
+    {
+      "name": "job-hunt-agents",
+      "source": "./",
+      "description": "stats-collector, vacancy-scout and resume-tailor: read-only job search agents that never invent resume facts.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "keywords": ["job-search", "resume", "hh.ru", "career"]
+    }
+  ]
+}
