@@ -9,3 +9,4 @@ if [ "$1" = "--project" ] && [ -n "$2" ]; then DEST="$2/.claude/agents"; fi
 mkdir -p "$DEST" && cp "$ROOT"/.claude/agents/*.md "$DEST"/
 echo "Installed to $DEST. Keep this repo folder: agents read sites/*.md, scripts/*.py and config from it."
 echo "Set JOBHUNT_CONFIG=/path/to/config.local.yaml or run agents from the repo folder."
+echo "Next: python3 scripts/setup.py (guided config), or say: use job-hunt-setup"

@@ -34,7 +34,15 @@ cp config.example.yaml config.local.yaml   # или пусть агент спр
 claude --chrome               # доступ к браузеру для сайтов с логином
 ```
 
-Дальше: «используй stats-collector», «используй vacancy-scout», «используй resume-tailor для <ссылка на вакансию>».
+Либо как плагин: `/plugin marketplace add AlienLynx/job-hunt-agents`, затем `/plugin install job-hunt-agents@job-hunt-agents`.
+
+**Первый запуск: пошаговая настройка**
+
+```bash
+python3 scripts/setup.py      # спросит про профиль, сайты, фильтры поиска; запишет config.local.yaml
+```
+
+Или скажи «используй job-hunt-setup». Агент проведёт интервью в чате, проверит, что подключены браузер и Hirify, что ты залогинен на каждом сайте, прочитает резюме и соберёт `master-facts.md` из подтверждённых тобой фактов. Дальше: «используй stats-collector», «используй vacancy-scout», «используй resume-tailor для <ссылка на вакансию>».
 
 **Приложение Claude (Cowork / desktop)**
 
@@ -43,6 +51,15 @@ scripts/pack_skills.sh        # создаёт dist/*.skill
 ```
 
 Загрузи каждый `.skill` в Настройки, Skills. Для сайтов используется встроенный браузер.
+
+## Другие среды (Codex, DeepSeek Harness и др.)
+
+Не проверялось. Промпты в `agents/*.md` это обычный markdown, скрипты это обычный Python, поэтому всё переносится. См. `AGENTS.md`: прочитай файл агента и `agents/_common.md` и следуй ему. Нужно поправить два места:
+
+- Браузер: в промптах названы инструменты браузера Claude. Подключи browser MCP-сервер (например Playwright MCP) и замени названия. DeepSeek Harness умеет подключать MCP-серверы как источник инструментов, но по умолчанию MCP там выключен.
+- Строка `model:` в начале файла относится только к Claude и в других средах игнорируется.
+
+`python3 scripts/setup.py` работает в любом терминале.
 
 ## Настройка
 
@@ -64,7 +81,7 @@ agents/            исходные промпты (правь здесь), _com
 .claude/agents/    генерируется для Claude Code
 skills/            генерируется для приложения Claude
 sites/             заметки по сайтам: URL, статусы, известные пробелы
-scripts/           render_report.py, match.py, check_resume.py, build_pdf.py, build.py
+scripts/           setup.py, render_report.py, match.py, check_resume.py, build_pdf.py, build.py
 examples/          stats.example.json
 ```
 

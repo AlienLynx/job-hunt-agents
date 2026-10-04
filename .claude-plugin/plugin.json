@@ -5,11 +5,13 @@
   "license": "MIT",
   "repository": "https://github.com/AlienLynx/job-hunt-agents",
   "agents": [
+    "./.claude/agents/job-hunt-setup.md",
     "./.claude/agents/stats-collector.md",
     "./.claude/agents/vacancy-scout.md",
     "./.claude/agents/resume-tailor.md"
   ],
   "skills": [
+    "./skills/job-hunt-setup",
     "./skills/stats-collector",
     "./skills/vacancy-scout",
     "./skills/resume-tailor"

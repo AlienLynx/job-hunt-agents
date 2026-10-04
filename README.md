@@ -34,7 +34,15 @@ cp config.example.yaml config.local.yaml   # or let the agent ask you
 claude --chrome               # browser access for logged-in sites
 ```
 
-Then: "use stats-collector", "use vacancy-scout", "use resume-tailor for <vacancy link>".
+Or as a plugin: `/plugin marketplace add AlienLynx/job-hunt-agents`, then `/plugin install job-hunt-agents@job-hunt-agents`.
+
+**First run: guided setup**
+
+```bash
+python3 scripts/setup.py      # asks about profile, sites, search filters; writes config.local.yaml
+```
+
+Or say "use job-hunt-setup". It interviews you in chat, checks that a browser tool and Hirify are connected, checks you are logged in to each site, reads your resumes and builds `master-facts.md` from facts you confirm. Then: "use stats-collector", "use vacancy-scout", "use resume-tailor for <vacancy link>".
 
 **Claude app (Cowork / desktop)**
 
@@ -43,6 +51,15 @@ scripts/pack_skills.sh        # creates dist/*.skill
 ```
 
 Upload each `.skill` in Settings, Skills. The built-in browser pane is used for sites.
+
+## Other harnesses (Codex, DeepSeek Harness, others)
+
+Not tested. The prompts in `agents/*.md` are plain markdown and the scripts are plain Python, so they carry over. See `AGENTS.md`: read the agent file plus `agents/_common.md` and follow it. Two things to adapt:
+
+- Browser: the prompts name Claude's browser tools. Connect a browser MCP server (for example Playwright MCP) and swap the tool names. DeepSeek Harness can use MCP servers as a tool source, but MCP is not enabled by default there.
+- The `model:` line in the frontmatter is Claude-specific and ignored elsewhere.
+
+`python3 scripts/setup.py` works in any terminal.
 
 ## Configuration
 
@@ -64,7 +81,7 @@ agents/            source prompts (edit here), _common.md is inlined into each
 .claude/agents/    generated for Claude Code
 skills/            generated for the Claude app
 sites/             per-site notes: URLs, statuses, known gaps
-scripts/           render_report.py, match.py, check_resume.py, build_pdf.py, build.py
+scripts/           setup.py, render_report.py, match.py, check_resume.py, build_pdf.py, build.py
 examples/          stats.example.json
 ```
 
