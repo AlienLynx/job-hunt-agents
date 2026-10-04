@@ -17,6 +17,10 @@ sites:                                   # enabled: true/false. Status of each a
   superjob:  { enabled: false, domains: ["superjob.ru"] }
   rabota_ru: { enabled: false, domains: ["rabota.ru"] }
   hirify:    { enabled: false }          # uses Hirify MCP if you have it
+  praca_by:  { enabled: false, domains: ["praca.by"] }       # untested
+  jooble:    { enabled: false, domains: ["jooble.org"] }      # untested, aggregator
+  habr_career: { enabled: false, domains: ["career.habr.com"] }  # untested
+  getmatch:  { enabled: false, domains: ["getmatch.ru"] }     # untested
   linkedin:  { enabled: false }          # read-only, experimental, mind the site's terms
 
 search:
@@ -27,6 +31,9 @@ search:
   salary_min: null
   max_vacancies_per_run: 40
   match_threshold: 60                    # show vacancies with match >= this, percent
+
+hh_api:                                  # optional: reads which resume each application used
+  enabled: false                         # needs a token, see scripts/hh_api.py. Without it the agent uses the browser
 
 rules:
   require_linkedin: true

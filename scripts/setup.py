@@ -14,10 +14,15 @@ SITES = [
     ("rabota_by", "rabota.by", True),
     ("superjob", "superjob.ru (untested)", False),
     ("rabota_ru", "rabota.ru (untested)", False),
+    ("praca_by", "praca.by (untested)", False),
+    ("jooble", "Jooble aggregator (untested)", False),
+    ("habr_career", "Habr Career (untested)", False),
+    ("getmatch", "getmatch (untested)", False),
     ("hirify", "Hirify via MCP connector", False),
     ("linkedin", "LinkedIn (experimental, mind site terms)", False),
 ]
-DOMAINS = {"hh": '["hh.ru"]', "rabota_by": '["rabota.by"]', "superjob": '["superjob.ru"]', "rabota_ru": '["rabota.ru"]'}
+DOMAINS = {"hh": '["hh.ru"]', "rabota_by": '["rabota.by"]', "superjob": '["superjob.ru"]', "rabota_ru": '["rabota.ru"]',
+           "praca_by": '["praca.by"]', "jooble": '["jooble.org"]', "habr_career": '["career.habr.com"]', "getmatch": '["getmatch.ru"]'}
 
 
 def ask(prompt, default=""):
@@ -63,6 +68,7 @@ def main():
     data = ask_("Data folder", "./jobhunt-data")
     print("== Job sites (read-only, you log in yourself) ==")
     enabled = {k: askb(f"Use {label}?", d) for k, label, d in SITES}
+    hh_api = askb("Use the optional hh API to read which resume each application used? Needs a token, see scripts/hh_api.py", False)
     print("== Search ==")
     locs = askl("Locations", ["Minsk", "Belarus", "Remote"])
     kws = askl("Keywords / roles", ["technical project manager", "product manager", "program manager"])
@@ -99,6 +105,9 @@ search:
   salary_min: {sal if sal.isdigit() else "null"}
   max_vacancies_per_run: {mx if mx.isdigit() else 40}
   match_threshold: {thr if thr.isdigit() else 60}
+
+hh_api:
+  enabled: {str(hh_api).lower()}
 
 rules:
   require_linkedin: true

@@ -18,7 +18,7 @@ Design goals: read-only on job sites (no auto-apply), minimal tokens (page text 
 |---|---|
 | hh.ru, rabota.by | Tested (rabota.by, read-only). See `sites/hh.md`. |
 | Hirify | Tested through its MCP connector. See `sites/hirify.md`. |
-| superjob.ru, rabota.ru | Untested. The agent discovers the pages on first run and records them. See `sites/`. |
+| praca.by, Jooble, Habr Career, getmatch, superjob.ru, rabota.ru | Untested. The agent discovers the pages on first run and records them. See `sites/`. |
 | LinkedIn | Experimental, off by default. Mind the site's terms. |
 
 Pull requests with verified adapters are welcome.
@@ -51,6 +51,14 @@ scripts/pack_skills.sh        # creates dist/*.skill
 ```
 
 Upload each `.skill` in Settings, Skills. The built-in browser pane is used for sites.
+
+## Which resume was used (hh.ru, rabota.by)
+
+The web UI no longer shows it. Order the stats agent tries: (1) optional hh API, `scripts/hh_api.py` (needs a token from dev.hh.ru, untested against the live API, read-only); (2) inference from the "who viewed your resume" page, marked "likely"; (3) leave empty, fill by hand. No token needed for 2 and 3.
+
+## Cost
+
+All agents run on the cheapest model (`model: haiku`). Scoring, merging and reports are Python scripts, so the model only reads pages and classifies. You can raise the model for `resume-tailor` in `agents/resume-tailor.md` if wording quality matters more than cost, then run `python3 scripts/build.py`.
 
 ## Other harnesses (Codex, DeepSeek Harness, others)
 

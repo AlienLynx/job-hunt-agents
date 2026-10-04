@@ -18,6 +18,7 @@ To run one: read `agents/<name>.md`, then read `agents/_common.md` (it replaces 
 
 - Read-only on job sites. Never apply, decline, send, delete or edit.
 - Never type passwords, codes or tokens. If a site needs log-in, ask the user to log in and reply "done".
+- Use the cheapest available model for all agentic work; scripts do scoring, merging and reports.
 - Never invent resume facts. Only `master_facts` counts.
 - Write personal data only to `config.local.yaml` and the `data_dir` folder (both gitignored).
 
