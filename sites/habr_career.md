@@ -1,7 +1,12 @@
 # Habr Career
 
-Status: **untested**. IT-focused. Base: `https://career.habr.com`. Vacancy search lives under `/vacancies` with filters in the URL (query text, remote, salary, qualification); verify the parameter names on the first run and record them in `<data_dir>/site-notes.md`. Public search needs no log-in.
+Status: **tested 2026-10-05, public search only, read-only** (no log-in tried). Base: `https://career.habr.com`.
 
-For `stats-collector` the responses page requires log-in; discover it on the first run.
+| Need | URL | Notes |
+|---|---|---|
+| Vacancy search | `/vacancies?q=<text>&type=all` | Page text shows `Найдена N вакансия`. 50 vacancy links per page; cards are `.vacancy-card` (date, company, title, salary or "Зарплата не указана", city, skills). Other filter parameters (remote, salary, qualification) are not verified. |
+| Vacancy page | `/vacancies/<id>` | The "Откликнуться" link on cards is `#guest-response`: do not click. |
 
-Same read-only rules as `sites/hh.md`. Never click apply, decline, send or delete. Log in only by the user.
+Notes: IT-heavy, many Russia-based roles. Applications and resumes pages: not tested.
+
+Same read-only rules as `sites/hh.md`. Never click apply, decline, send or delete. Log in only by the user. Never solve captchas or bypass bot checks.

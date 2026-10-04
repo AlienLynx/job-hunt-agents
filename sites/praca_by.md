@@ -1,7 +1,12 @@
 # praca.by
 
-Status: **untested**. Belarus job board. Base: `https://praca.by`. On the first run discover the pages for: vacancy search with filters in the URL, my responses, my resumes. Record what worked in `<data_dir>/site-notes.md` (statuses wording, paging, whether the resume used is visible), then send it back as a pull request.
+Status: **tested 2026-10-05, public search only, read-only** (no log-in tried). Base: `https://praca.by`.
 
-Prefer public vacancy search (no log-in needed) for `vacancy-scout`. Log in only for `stats-collector`.
+| Need | URL | Notes |
+|---|---|---|
+| Vacancy search | `/search/vacancies/?search[query]=<text>` (URL-encode the brackets) | Page text shows `Найдено: N`. Many filters (city, remote, schedule, experience) are checkboxes; their URL parameters are not verified yet. Filter by text instead. |
+| Vacancy page | `/vacancy/<id>/` | Result cards link here. Read requirements once. |
 
-Same read-only rules as `sites/hh.md`. Never click apply, decline, send or delete. Log in only by the user.
+Notes: the page text is dominated by the city list. Extract cards with a script on `a[href*="/vacancy/"]` instead of reading all text (saves tokens). Small market: "project manager" returned 2 vacancies. Applications and resumes pages: not tested.
+
+Same read-only rules as `sites/hh.md`. Never click apply, decline, send or delete. Log in only by the user. Never solve captchas or bypass bot checks.

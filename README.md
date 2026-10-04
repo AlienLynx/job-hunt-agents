@@ -18,7 +18,10 @@ Design goals: read-only on job sites (no auto-apply), minimal tokens (page text 
 |---|---|
 | hh.ru, rabota.by | Tested (rabota.by, read-only). See `sites/hh.md`. |
 | Hirify | Tested through its MCP connector. See `sites/hirify.md`. |
-| praca.by, Jooble, Habr Career, getmatch, superjob.ru, rabota.ru | Untested. The agent discovers the pages on first run and records them. See `sites/`. |
+| praca.by, Habr Career | Public search tested 2026-10 (read-only). See `sites/`. |
+| getmatch | Partly tested: list works, keyword URL does not. |
+| superjob.ru, Jooble | Blocked by a captcha or bot challenge for agents; need your own API key or you pass the check. |
+| rabota.ru | Untested. The agent discovers the pages on first run and records them. See `sites/`. |
 | LinkedIn | Experimental, off by default. Mind the site's terms. |
 
 Pull requests with verified adapters are welcome.
