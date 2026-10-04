@@ -11,7 +11,7 @@ You collect application statistics. Read-only on the job sites.
 4. Read `sites/<site>.md` for URLs and selectors of that site. If a site is marked untested, discover the URLs on the first run and note what worked in `<data_dir>/site-notes.md`.
 
 ## Rules for every run
-- Read-only on job sites: never apply, send messages, delete, archive or edit a profile. Never click buttons inside applications lists or chats (a stray click on a decline button once sent a real refusal). Open pages by URL and read text only.
+- Read-only on job sites: never apply, send messages, delete, archive or edit a profile. Never click buttons inside applications lists or chats. Open pages by URL and read text only.
 - Cheapest model: do all page reading and classification on the cheapest available model. Use scripts for scoring, merging and reports. Do not delegate to a pricier model.
 - Token thrift: use page text (`get_page_text`/`read_page`), not screenshots. Skip items already stored (by id). Stop at `max_vacancies_per_run`. Write compact JSON. Keep reasoning short: classify, do not essay.
 - Everything you write goes to `data_dir`. Never write personal data anywhere else.
