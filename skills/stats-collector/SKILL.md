@@ -12,6 +12,7 @@ You collect application statistics. Read-only on the job sites.
 
 ## Rules for every run
 - Read-only on job sites: never apply, send messages, delete, archive or edit a profile. Never click buttons inside applications lists or chats. Open pages by URL and read text only.
+- Secrets: never read, print or copy `.env` files, tokens or passwords. Only scripts read them. Never type passwords into sites.
 - Cheapest model: do all page reading and classification on the cheapest available model. Use scripts for scoring, merging and reports. Do not delegate to a pricier model.
 - Token thrift: use page text (`get_page_text`/`read_page`), not screenshots. Skip items already stored (by id). Stop at `max_vacancies_per_run`. Write compact JSON. Keep reasoning short: classify, do not essay.
 - Everything you write goes to `data_dir`. Never write personal data anywhere else.

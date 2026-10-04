@@ -126,6 +126,10 @@ rules:
             "## Skills\n- \n\n## Education\n- \n\n## Do not claim\n- \n",
             encoding="utf-8",
         )
+    envf = root / ".env"
+    if interactive and not envf.exists() and ask_bool("Create .env from .env.example for optional API tokens (agents never read it)?", False):
+        envf.write_text((root / ".env.example").read_text(encoding="utf-8"), encoding="utf-8")
+        print(f"Created {envf}. Fill only what you use. It is gitignored.")
     print(f"\nWrote {out}\nData folder: {d}\nPut your base resumes (md, txt or pdf) into {d / 'resumes'}")
     missing = []
     for mod in ("markdown", "weasyprint"):

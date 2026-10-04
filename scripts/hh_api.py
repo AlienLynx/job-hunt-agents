@@ -10,7 +10,7 @@ Setup (once, you do this yourself; never paste secrets into chat):
   export HH_CLIENT_ID=...  HH_CLIENT_SECRET=...  HH_REDIRECT_URI=...   # from dev.hh.ru
   python3 scripts/hh_api.py auth-url                  # open the printed URL, log in, allow
   python3 scripts/hh_api.py token --code <code from the redirect URL>  # saves the token to a local file
-Or set HH_TOKEN yourself and skip the above.
+Or set HH_TOKEN yourself (environment or .env, see .env.example) and skip the above.
 
 Use:
   python3 scripts/hh_api.py resumes                     -> JSON list of your resumes
@@ -18,6 +18,10 @@ Use:
 Add --host rabota.by for the Belarus site (default hh.ru). Read-only: only GET requests are sent.
 """
 import argparse, json, os, pathlib, sys, urllib.parse, urllib.request, urllib.error
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import jobhunt_env
+jobhunt_env.load()  # optional .env, see .env.example
 
 API = "https://api.hh.ru"
 TOKEN_FILE = pathlib.Path(os.environ.get("HH_TOKEN_FILE", "~/.jobhunt/hh_token.json")).expanduser()

@@ -56,6 +56,12 @@ Upload each `.skill` in Settings, Skills. The built-in browser pane is used for 
 
 The web UI no longer shows it. Order the stats agent tries: (1) optional hh API, `scripts/hh_api.py` (needs a token from dev.hh.ru, untested against the live API, read-only); (2) inference from the "who viewed your resume" page, marked "likely"; (3) leave empty, fill by hand. No token needed for 2 and 3.
 
+## Secrets and tests
+
+Optional API tokens go in `.env` (copy `.env.example`, gitignored) or `~/.jobhunt/.env`. Only the scripts read it; agents never read or print it and never type passwords into sites. Prefer tokens over passwords, and do not store site passwords on disk unless you accept plain text.
+
+Tests: `python3 -m unittest discover -s tests -v` (also run by GitHub Actions on every push).
+
 ## Cost
 
 All agents run on the cheapest model (`model: haiku`). Scoring, merging and reports are Python scripts, so the model only reads pages and classifies. You can raise the model for `resume-tailor` in `agents/resume-tailor.md` if wording quality matters more than cost, then run `python3 scripts/build.py`.
